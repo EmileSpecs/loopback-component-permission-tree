@@ -1,13 +1,12 @@
-const PermissionTree = require('./src/PermissionTree');
+const Permissions = require('./src/Permissions');
 
 module.exports = function(app, optionsToMerge) {
     const options = Object.assign({ 
-      mountPath: '/getUserPermissionTree', 
       enableCache: true,
       models: {
         RoleMapping: 'RoleMapping',
         ACL: 'ACL'
       }
     }, optionsToMerge);
-    app.permissions = new PermissionTree(app.models, app.remotes(), options);
+    app.permissions = new Permissions(app.models, app.remotes(), options);
 };
